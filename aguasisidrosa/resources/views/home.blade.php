@@ -16,10 +16,13 @@
 
                     @if(Auth::user()->hasRole('admin'))
                         <div>Acceso como administrador</div>
+                        {{-- <a href="{!! route('Tipo.index') !!}" class="btn btn-primary">ver registros</a> --}} 
                     @else
                         <div>Acceso usuario</div>
                     @endif
-                        You are logged in!
+                        <a href="{!! route('registrosARD.index') !!}" class="btn btn-success">Ver registros</a><br><br>
+                        <a href="{!! route('variablesARD.index') !!}" class="btn btn-success">Ver variables</a><br><br>
+                        @yield('mainA') 
                     </div>
             </div>
         </div>

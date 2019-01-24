@@ -71,7 +71,6 @@
                             <a href="{{ url('/home') }}">Home</a>
                             @if(Auth::user()->hasRole('admin'))
                                  <a href="{{ route('login') }}">crear usuario</a>
-                                 <a href="{{ route('login') }}">Login</a>
                             @endif
                         @else
                             <a href="{{ route('login') }}">Login</a>
