@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariablesTable extends Migration
+class Arduino extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateVariablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('variables', function (Blueprint $table) {
-            $table->increments('id_variable');
-            $table->string('desc_variables')->unique();
+        Schema::create('arduino', function (Blueprint $table) {
+            $table->increments('arduino_id');
+            $table->string('nombre_arduino');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes();  
         });
     }
 
@@ -28,6 +28,6 @@ class CreateVariablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variables');
+        //
     }
 }

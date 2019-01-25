@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariablesTable extends Migration
+class Localidad extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateVariablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('variables', function (Blueprint $table) {
-            $table->increments('id_variable');
-            $table->string('desc_variables')->unique();
+        Schema::create('localidad', function (Blueprint $table) {
+            $table->increments('localidad_id');
+            $table->integer('localidad_codigo');
+            $table->string('localidad_nombre');
+            $table->string('localidad_orden');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +30,6 @@ class CreateVariablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variables');
+        //
     }
 }

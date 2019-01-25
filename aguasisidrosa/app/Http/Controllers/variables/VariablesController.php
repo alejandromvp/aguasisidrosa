@@ -38,11 +38,11 @@ class VariablesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'desc_variable' => "required",
+            'desc_variable' => "required|unique:variables,desc_variables"
         ]);
 
         variables::create([
-           'variables' => $validatedData['desc_variable'],
+           'desc_variables' => $validatedData['desc_variable'],
         ]);
 
         return redirect()->route('variablesARD.index');

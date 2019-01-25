@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariablesTable extends Migration
+class TipoRecinto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateVariablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('variables', function (Blueprint $table) {
-            $table->increments('id_variable');
-            $table->string('desc_variables')->unique();
+        Schema::create('tipo_recinto', function (Blueprint $table) {
+            $table->increments('tipo_recinto_id');
+            $table->string('tipo_recinto_nombre');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +28,6 @@ class CreateVariablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variables');
+        //
     }
 }

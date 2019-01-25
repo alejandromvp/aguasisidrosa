@@ -22,7 +22,7 @@
 			@foreach($variables as $variable)
 			<tr class="odd">
 				<td >{{ $variable->id_variable }}</td>
-				<td >{{ $variable->variables }}</td>
+				<td >{{ $variable->desc_variables }}</td>
 				<td>
 					<form method="POST" action="{{route('variablesARD.destroy', $variable->id_variable)}}" style="display:inline;">
 						{{method_field('DELETE')}}

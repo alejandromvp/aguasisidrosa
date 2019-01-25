@@ -13,8 +13,8 @@ class variablesSeeder extends Seeder
     public function run()
     {
          $role = [
-               ['variables' => 'temperatura'],
-               ['variables' => 'presion']      
+               ['desc_variables' => 'temperatura'],
+               ['desc_variables' => 'presion']      
         ];
         foreach ($role as $key => $value) variables::create($value);
     }

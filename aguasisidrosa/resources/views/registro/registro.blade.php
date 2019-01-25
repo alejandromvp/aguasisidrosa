@@ -11,15 +11,19 @@
 				<table id="datatable" class="table table-striped table-sm">
 		<thead>
 			<tr>
-				<th class="sorting" aria-controls="datatable">Id variable</th>
-				<th class="sorting" aria-controls="datatable">info</th>
+				<th class="sorting" aria-controls="datatable">id dispositivo </th>
+				<th class="sorting" aria-controls="datatable">tipo de medicion </th>
+				<th class="sorting" aria-controls="datatable">valor</th>
+				<th class="sorting" aria-controls="datatable">fecha registro</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($registros as $registro)
 			<tr class="odd">
-				<td >{{ $registro->id_variable }}</td>
+				<td > arduino leopardo #1213</td>
+				<td >{{ $registro->variable->desc_variables }}</td>
 				<td >{{ $registro->info }}</td>
+				<td >{{ $registro->created_at }}</td>
 			</tr>
 			@endforeach
 		</tbody>
