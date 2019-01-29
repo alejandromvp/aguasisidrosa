@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\variables;
+namespace App\Http\Controllers\arduinos;
 
-use App\Models\variables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Arduino;
 use DB;
 use Carbon\Carbon;
 
-
-class VariablesController extends Controller
+class ArduinoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class VariablesController extends Controller
      */
     public function index()
     {
-        $variables = variables::all();
-        return view('variables.variables', compact('variables'));
+        $arduinos = Arduino::all();
+        return view('arduinos.arduinos', compact('arduinos'));
     }
 
     /**
@@ -29,7 +28,7 @@ class VariablesController extends Controller
      */
     public function create()
     {
-        return view('variables.create');
+        return view('arduinos.create');
     }
 
     /**
@@ -41,14 +40,15 @@ class VariablesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'desc_variable' => "required|unique:variables,desc_variables"
+            'desc_arduino' => "required|unique:variables,desc_variables",
+            'desc_arduino' => "required|unique:variables,desc_variables",
         ]);
 
-        variables::create([
-           'desc_variables' => $validatedData['desc_variable'],
+        Arduino::create([
+           'nombre_arduino' => $validatedData['desc_arduino'],
         ]);
 
-        return redirect()->route('variablesARD.index');
+        return redirect()->route('Arduino.index');
     }
 
     /**
@@ -59,8 +59,8 @@ class VariablesController extends Controller
      */
     public function show($id)
     {
-        $variable = variables::where('id_variable', $id)->first();
-        return view('variables.show', compact('variable'));
+        $arduino = Arduino::where('arduino_id', $id)->first();
+        return view('arduinos.show', compact('arduino'));
     }
 
     /**
@@ -71,8 +71,8 @@ class VariablesController extends Controller
      */
     public function edit($id)
     {
-        $variable = variables::where('id_variable', $id)->first();
-        return view('variables.edit', compact('variable')); 
+        $arduino = Arduino::where('arduino_id', $id)->first();
+        return view('arduinos.edit', compact('arduino')); 
     }
 
     /**
@@ -84,15 +84,20 @@ class VariablesController extends Controller
      */
     public function update(Request $request, $id)
     {
+         
         $validatedData = $request->validate([
-            'desc_variable' => "unique:variables,desc_variables",
+            'desc_arduino' => "required",
+            'desc_tag' => "required|unique:arduino,tag",
         ]);
 
-        DB::table('variables')->where('id_variable', $id)->update([
-            "desc_variables" => $request->input('desc_variable'),
+        DB::table('arduino')->where('arduino_id', $id)->update([
+            "nombre_arduino" => $request->input('desc_arduino'),
+            "tag" => $request->input('desc_tag'),
             "updated_at" => Carbon::now(),
         ]);
-        return redirect()->route('variablesARD.show',  $id);
+        
+        $arduino = Arduino::where('arduino_id', $id)->first();
+        return redirect()->route('Arduino.show',  $id);
     }
 
     /**
@@ -103,7 +108,7 @@ class VariablesController extends Controller
      */
     public function destroy($id)
     {
-        $variable = variables::where('id_variable', $id)->delete();
-        return redirect()->route('variablesARD.index');
+        $variable = Arduino::where('arduino_id', $id)->delete();
+        return redirect()->route('Arduino.index');
     }
 }

@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\variables;
+namespace App\Http\Controllers\tipo_recinto;
 
-use App\Models\variables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tipo_recinto;
 use DB;
 use Carbon\Carbon;
 
-
-class VariablesController extends Controller
+class Tipo_recintoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class VariablesController extends Controller
      */
     public function index()
     {
-        $variables = variables::all();
-        return view('variables.variables', compact('variables'));
+        $tipo_recintos = Tipo_recinto::all();
+        return view('tipo_recinto.tipo_recinto', compact('tipo_recintos'));
     }
 
     /**
@@ -29,7 +28,7 @@ class VariablesController extends Controller
      */
     public function create()
     {
-        return view('variables.create');
+       return view('tipo_recinto.create');
     }
 
     /**
@@ -40,15 +39,15 @@ class VariablesController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'desc_variable' => "required|unique:variables,desc_variables"
+         $validatedData = $request->validate([
+            'Nom_tipo_recinto' => "required|unique:tipo_recinto,tipo_recinto_nombre",
         ]);
 
-        variables::create([
-           'desc_variables' => $validatedData['desc_variable'],
+        Tipo_recinto::create([
+           'tipo_recinto_nombre' => $validatedData['Nom_tipo_recinto'],
         ]);
 
-        return redirect()->route('variablesARD.index');
+        return redirect()->route('Tipo_recinto.index');
     }
 
     /**
@@ -59,8 +58,8 @@ class VariablesController extends Controller
      */
     public function show($id)
     {
-        $variable = variables::where('id_variable', $id)->first();
-        return view('variables.show', compact('variable'));
+        $tipo_recinto = Tipo_recinto::where('tipo_recinto_id', $id)->first();
+        return view('tipo_recinto.show', compact('tipo_recinto'));
     }
 
     /**
@@ -71,8 +70,8 @@ class VariablesController extends Controller
      */
     public function edit($id)
     {
-        $variable = variables::where('id_variable', $id)->first();
-        return view('variables.edit', compact('variable')); 
+        $tipo_recinto = Tipo_recinto::where('tipo_recinto_id', $id)->first();
+        return view('tipo_recinto.edit', compact('tipo_recinto')); 
     }
 
     /**
@@ -84,15 +83,16 @@ class VariablesController extends Controller
      */
     public function update(Request $request, $id)
     {
+          
         $validatedData = $request->validate([
-            'desc_variable' => "unique:variables,desc_variables",
+            'desc_recinto' => "required|unique:tipo_recinto,tipo_recinto_nombre",
         ]);
 
-        DB::table('variables')->where('id_variable', $id)->update([
-            "desc_variables" => $request->input('desc_variable'),
+        DB::table('tipo_recinto')->where('tipo_recinto_id', $id)->update([
+            "tipo_recinto_nombre" => $request->input('desc_recinto'),
             "updated_at" => Carbon::now(),
         ]);
-        return redirect()->route('variablesARD.show',  $id);
+        return redirect()->route('Tipo_recinto.show',  $id);
     }
 
     /**
@@ -103,7 +103,7 @@ class VariablesController extends Controller
      */
     public function destroy($id)
     {
-        $variable = variables::where('id_variable', $id)->delete();
-        return redirect()->route('variablesARD.index');
+        $variable = Tipo_recinto::where('tipo_recinto_id', $id)->delete();
+        return redirect()->route('Tipo_recinto.index');
     }
 }

@@ -25,7 +25,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '20';
         $recinto->localidad_id = 1;
         $recinto->tipo_recinto_id = 1;
-        $recinto->arduino_id = 2;
+        $recinto->arduino_id = 3;
         $recinto->save();
 
         $recinto = new Recintos();
@@ -33,7 +33,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '30';
         $recinto->localidad_id = 1;
         $recinto->tipo_recinto_id = 1;
-        $recinto->arduino_id = 1;
+        $recinto->arduino_id = 2;
         $recinto->save();
 
         $recinto = new Recintos();
@@ -41,7 +41,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '40';
         $recinto->localidad_id = 1;
         $recinto->tipo_recinto_id = 1;
-        $recinto->arduino_id = 1;
+        $recinto->arduino_id = 4;
         $recinto->save();
 
         $recinto = new Recintos();
@@ -49,7 +49,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '50';
         $recinto->localidad_id = 1;
         $recinto->tipo_recinto_id = 2;
-        $recinto->arduino_id = 2;
+        $recinto->arduino_id = 5;
         $recinto->save();
 
         $recinto = new Recintos();
@@ -57,7 +57,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '60';
         $recinto->localidad_id = 2;
         $recinto->tipo_recinto_id = 1;
-        $recinto->arduino_id = 2;
+        $recinto->arduino_id = 6;
         $recinto->save();
 
         $recinto = new Recintos();
@@ -65,7 +65,7 @@ class recintosSeeder extends Seeder
         $recinto->recinto_orden = '70';
         $recinto->localidad_id = 6;
         $recinto->tipo_recinto_id = 1;
-        $recinto->arduino_id = 1;
+        $recinto->arduino_id = NULL;
         $recinto->save();
 
     }

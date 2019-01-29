@@ -16,6 +16,8 @@ class CreateRegistrosTable extends Migration
         Schema::create('registros', function (Blueprint $table) {
             $table->increments('id_registro');
             $table->unsignedInteger('id_variable');
+            $table->unsignedInteger('id_dispositivo');
+            $table->foreign('id_dispositivo')->references('arduino_id')->on('arduino');
             $table->foreign('id_variable')->references('id_variable')->on('variables');
             $table->string('info');
             $table->timestamps();

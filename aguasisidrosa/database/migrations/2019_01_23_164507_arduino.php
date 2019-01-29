@@ -16,6 +16,7 @@ class Arduino extends Migration
         Schema::create('arduino', function (Blueprint $table) {
             $table->increments('arduino_id');
             $table->string('nombre_arduino');
+            $table->string('tag')->unique();
             $table->timestamps();
             $table->softDeletes();  
         });

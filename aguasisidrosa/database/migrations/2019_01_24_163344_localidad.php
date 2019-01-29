@@ -15,9 +15,9 @@ class Localidad extends Migration
     {
         Schema::create('localidad', function (Blueprint $table) {
             $table->increments('localidad_id');
-            $table->integer('localidad_codigo');
+            $table->unsignedInteger('localidad_codigo')->unique();
             $table->string('localidad_nombre');
-            $table->string('localidad_orden');
+            $table->unsignedInteger('localidad_orden');
             $table->timestamps();
             $table->softDeletes();
         });

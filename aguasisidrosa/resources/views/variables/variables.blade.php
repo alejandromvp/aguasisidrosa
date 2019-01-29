@@ -3,7 +3,7 @@
 @section('mainA') 
     <div class="card">
 		<div class="card-header">
-			<h3 class="card-title">Registros <small></small>
+			<h3 class="card-title">Variables <small></small>
 				<a href="{!! route('variablesARD.create') !!}" class="btn btn-primary">agregar variable</a>
 			</h3>
 			<div class="clearfix"></div>
@@ -15,7 +15,6 @@
 			<tr>
 				<th class="sorting" aria-controls="datatable">Id variable</th>
 				<th class="sorting" aria-controls="datatable">info</th>
-				<th class="sorting" aria-controls="datatable">Eliminar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,6 +22,7 @@
 			<tr class="odd">
 				<td >{{ $variable->id_variable }}</td>
 				<td >{{ $variable->desc_variables }}</td>
+				<td><a href="{{route('variablesARD.edit', $variable->id_variable)}}" class="btn btn-info btn-xs">Editar</a></td>
 				<td>
 					<form method="POST" action="{{route('variablesARD.destroy', $variable->id_variable)}}" style="display:inline;">
 						{{method_field('DELETE')}}

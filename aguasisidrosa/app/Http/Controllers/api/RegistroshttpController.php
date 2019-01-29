@@ -39,6 +39,7 @@ class RegistroshttpController extends Controller
         $registro = new Registroshttp;
         //Declaramos el nombre con el nombre enviado en el request
         $registro->id_variable = $request->id_variable;
+        $registro->id_dispositivo = $request->id_dispositivo;
         $registro->info = $request->info;
         //Guardamos el cambio en nuestro modelo
         $registro->save();

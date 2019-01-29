@@ -20,3 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('registrosARD', 'registros\RegistrosController');
 Route::resource('variablesARD', 'variables\VariablesController');
+
+// sectorizacion controller
+Route::resource('Localidades', 'localidad\LocalidadController');
+Route::resource('Recintos',   'recintos\RecintosController');
+Route::resource('Tipo_recinto', 'tipo_recinto\Tipo_recintoController');
+Route::resource('Arduino', 'arduinos\ArduinoController');
